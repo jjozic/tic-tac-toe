@@ -23,13 +23,17 @@ header{
 
 #gamefield, td{
     border: black 1pt solid;
-    padding: 2vw;
+    padding: 6vw;
 }
 
 #player1, #player2{
     padding: 5vw;
     font-size: 20pt;
     font-weight: 600;
+}
+
+.selected{
+    text-decoration: underline;
 }
 
 footer{
