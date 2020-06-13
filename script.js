@@ -17,7 +17,7 @@ function drawBoard() {
 
 function gameLogic(col) {
     //so the fields can't be overwritten
-    if(col.innerHTML === ''){
+    if (col.innerHTML === '') {
         if (currentPlayer === 1) {
             player1.classList.remove('selected')
             player2.classList.add('selected')
@@ -25,7 +25,7 @@ function gameLogic(col) {
             checkWinner()
             currentPlayer = 2
         }
-        else if (currentPlayer === 2){
+        else if (currentPlayer === 2) {
             player2.classList.remove('selected')
             player1.classList.add('selected')
             col.innerHTML = 'O'
@@ -35,43 +35,63 @@ function gameLogic(col) {
     }
 }
 
-function checkWinner(){
+function checkWinner() {
     var winner = false
 
     let fields = gameField.getElementsByTagName('tr')
     let count = 0
     let targetedPlayer = 'X'
 
-    if (currentPlayer === 1){
+    if (currentPlayer === 1) {
         targetedPlayer = 'X'
     }
-    else if (currentPlayer === 2){
+    else if (currentPlayer === 2) {
         targetedPlayer = 'O'
     }
 
     //vertical rows check
-    for(i = 0; i < 3; i++){
+    for (i = 0; i < 3; i++) {
         count = 0
-        for(j = 0; j < 3; j++){
-            if(fields[i].childNodes[j].innerHTML === targetedPlayer){
+        for (j = 0; j < 3; j++) {
+            if (fields[i].childNodes[j].innerHTML === targetedPlayer) {
                 count++
             }
-            if(count === 3){
+            if (count === 3) {
                 console.log('Player ' + currentPlayer + ' wins!')
             }
         }
     }
 
     //horizontal rows check
-    for(i = 0; i < 3; i++){
+    for (i = 0; i < 3; i++) {
         count = 0
-        for(j = 0; j < 3; j++){
-            if(fields[j].childNodes[i].innerHTML === targetedPlayer){
+        for (j = 0; j < 3; j++) {
+            if (fields[j].childNodes[i].innerHTML === targetedPlayer) {
                 count++
             }
-            if(count === 3){
+            if (count === 3) {
                 console.log('Player ' + currentPlayer + ' wins!')
             }
+        }
+    }
+
+    //diagonal rows check
+    count=0
+    for (i = 0; i < 3; i++) {
+        if (fields[i].childNodes[i].innerHTML === targetedPlayer) {
+            count++
+        }
+        if (count === 3) {
+            console.log('Player ' + currentPlayer + ' wins!')
+        }
+    }
+    count=0
+    for (i = 3; i > 0; i--) {
+        if (fields[i].childNodes[i].innerHTML === targetedPlayer) {
+            count++
+        }
+        if (count === 3) {
+            console.log('Player ' + currentPlayer + ' wins!')
         }
     }
 }
