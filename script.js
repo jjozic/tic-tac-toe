@@ -24,20 +24,20 @@ function gameLogic(col) {
             player1.classList.remove('selected')
             player2.classList.add('selected')
             col.innerHTML = 'X'
-            checkWinner()
+            checkWinner(currentPlayer)
             currentPlayer = 2
         }
         else if (currentPlayer === 2) {
             player2.classList.remove('selected')
             player1.classList.add('selected')
             col.innerHTML = 'O'
-            checkWinner()
+            checkWinner(currentPlayer)
             currentPlayer = 1
         }
     }
 }
 
-function checkWinner() {
+function checkWinner(player) {
     let winner = false
     let targetedPlayer = 'X'
     let verticalCount = 0
@@ -45,10 +45,10 @@ function checkWinner() {
     let leftToRightCount = 0
     let rightToLeftCount = 0
 
-    if (currentPlayer === 1) {
+    if (player === 1) {
         targetedPlayer = 'X'
     }
-    else if (currentPlayer === 2) {
+    else if (player === 2) {
         targetedPlayer = 'O'
     }
 
@@ -83,9 +83,9 @@ function checkWinner() {
 
     if (winner) {
         setTimeout(function () {
-            alert('Player ' + currentPlayer + ' wins!')
+            alert('Player ' + player + ' wins!')
             restart()
-        }, 250);
+        }, 100);
     }
 }
 

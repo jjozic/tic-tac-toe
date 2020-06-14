@@ -16,6 +16,8 @@ header{
 }
 
 #gamefield{
+    table-layout: fixed;
+    overflow: hidden;
     background-color: lightcyan;
     border-collapse: collapse;
     box-shadow: 9px 10px 29px 0px rgba(0,0,0,0.75);
@@ -32,8 +34,14 @@ header{
     font-weight: 600;
 }
 
+#menu{
+    margin: 2vw;
+    display: flex;
+    justify-content: center;
+}
+
 #restartBtn{
-    margin: auto;
+    cursor: pointer;
     outline: none;
     border: 1px black solid;
     padding: 20px;
@@ -47,5 +55,5 @@ header{
 }
 
 footer{
-    margin-top: 25vh;
+    margin-top: 15vh;
 }
