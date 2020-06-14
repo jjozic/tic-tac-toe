@@ -36,11 +36,14 @@ function gameLogic(col) {
 }
 
 function checkWinner() {
-    var winner = false
-
-    let fields = gameField.getElementsByTagName('tr')
-    let count = 0
+    const fields = gameField.getElementsByTagName('tr')
+    let winner = false
     let targetedPlayer = 'X'
+    let verticalCount = 0
+    let horizontalCount = 0
+    let leftToRightCount = 0
+    let rightToLeftCount = 0
+    let count = 0
 
     if (currentPlayer === 1) {
         targetedPlayer = 'X'
@@ -49,50 +52,37 @@ function checkWinner() {
         targetedPlayer = 'O'
     }
 
-    //vertical rows check
     for (i = 0; i < 3; i++) {
-        count = 0
+        verticalCount = 0
+        horizontalCount = 0
         for (j = 0; j < 3; j++) {
+            //vertical rows check
             if (fields[i].childNodes[j].innerHTML === targetedPlayer) {
-                count++
+                verticalCount++
             }
-            if (count === 3) {
-                console.log('Player ' + currentPlayer + ' wins!')
-            }
-        }
-    }
-
-    //horizontal rows check
-    for (i = 0; i < 3; i++) {
-        count = 0
-        for (j = 0; j < 3; j++) {
+            //horizontal rows check
             if (fields[j].childNodes[i].innerHTML === targetedPlayer) {
-                count++
+                horizontalCount++
             }
-            if (count === 3) {
-                console.log('Player ' + currentPlayer + ' wins!')
+            if (verticalCount === 3 || horizontalCount == 3) {
+                winner = true
             }
+        }
+        //diagonal left to right
+        if (fields[i].childNodes[i].innerHTML === targetedPlayer) {
+            leftToRightCount++
+        }
+        //diagonal right to left
+        if (fields[i].childNodes[2-i].innerHTML === targetedPlayer) {
+            rightToLeftCount++
+        }
+        if (leftToRightCount === 3 || rightToLeftCount === 3) {
+            winner = true
         }
     }
 
-    //diagonal rows check
-    count=0
-    for (i = 0; i < 3; i++) {
-        if (fields[i].childNodes[i].innerHTML === targetedPlayer) {
-            count++
-        }
-        if (count === 3) {
-            console.log('Player ' + currentPlayer + ' wins!')
-        }
-    }
-    count=0
-    for (i = 0; i < 3; i++) {
-        if (fields[i].childNodes[2-i].innerHTML === targetedPlayer) {
-            count++
-        }
-        if (count === 3) {
-            console.log('Player ' + currentPlayer + ' wins!')
-        }
+    if(winner){
+        alert('Player ' + currentPlayer + ' wins!')
     }
 }
 
