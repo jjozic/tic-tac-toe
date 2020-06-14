@@ -23,7 +23,7 @@ header{
 
 #gamefield, td{
     border: black 1pt solid;
-    padding: 6vw;
+    padding: 4vw;
 }
 
 #player1, #player2{
@@ -32,10 +32,14 @@ header{
     font-weight: 600;
 }
 
+#restartBtn{
+    margin: auto;
+}
+
 .selected{
     text-decoration: underline;
 }
 
 footer{
-    margin-top: 45vh;
+    margin-top: 25vh;
 }

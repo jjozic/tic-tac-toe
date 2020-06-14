@@ -1,6 +1,8 @@
 const gameField = document.getElementById('gamefield')
 const player1 = document.getElementById('player1')
 const player2 = document.getElementById('player2')
+const restartBtn = document.getElementById('restartBtn')
+const fields = gameField.getElementsByTagName('tr')
 var currentPlayer = 1
 
 function drawBoard() {
@@ -36,7 +38,6 @@ function gameLogic(col) {
 }
 
 function checkWinner() {
-    const fields = gameField.getElementsByTagName('tr')
     let winner = false
     let targetedPlayer = 'X'
     let verticalCount = 0
@@ -86,4 +87,14 @@ function checkWinner() {
     }
 }
 
+function restart(){
+    console.log("gurke")
+    for (i = 0; i < 3; i++) {
+        for (j = 0; j < 3; j++) {
+            fields[i].childNodes[j].innerHTML = ''
+        }
+    }
+}
+
 window.addEventListener('load', drawBoard())  
+restartBtn.addEventListener('click', restart)
