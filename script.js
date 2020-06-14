@@ -86,8 +86,8 @@ function checkWinner() {
         }
     }
     count=0
-    for (i = 3; i > 0; i--) {
-        if (fields[i].childNodes[i].innerHTML === targetedPlayer) {
+    for (i = 0; i < 3; i++) {
+        if (fields[i].childNodes[2-i].innerHTML === targetedPlayer) {
             count++
         }
         if (count === 3) {
