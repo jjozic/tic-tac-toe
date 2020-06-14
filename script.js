@@ -44,7 +44,6 @@ function checkWinner() {
     let horizontalCount = 0
     let leftToRightCount = 0
     let rightToLeftCount = 0
-    let count = 0
 
     if (currentPlayer === 1) {
         targetedPlayer = 'X'
@@ -74,7 +73,7 @@ function checkWinner() {
             leftToRightCount++
         }
         //diagonal right to left
-        if (fields[i].childNodes[2-i].innerHTML === targetedPlayer) {
+        if (fields[i].childNodes[2 - i].innerHTML === targetedPlayer) {
             rightToLeftCount++
         }
         if (leftToRightCount === 3 || rightToLeftCount === 3) {
@@ -82,12 +81,15 @@ function checkWinner() {
         }
     }
 
-    if(winner){
-        alert('Player ' + currentPlayer + ' wins!')
+    if (winner) {
+        setTimeout(function () {
+            alert('Player ' + currentPlayer + ' wins!')
+            restart()
+        }, 500);
     }
 }
 
-function restart(){
+function restart() {
     console.log("gurke")
     for (i = 0; i < 3; i++) {
         for (j = 0; j < 3; j++) {
@@ -96,5 +98,5 @@ function restart(){
     }
 }
 
-window.addEventListener('load', drawBoard())  
+window.addEventListener('load', drawBoard())
 restartBtn.addEventListener('click', restart)
