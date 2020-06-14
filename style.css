@@ -34,6 +34,12 @@ header{
 
 #restartBtn{
     margin: auto;
+    outline: none;
+    border: 1px black solid;
+    padding: 20px;
+    background-color: lightcyan;
+    border-radius: 1rem;
+    box-shadow: 9px 10px 29px 0px rgba(0,0,0,0.75);
 }
 
 .selected{

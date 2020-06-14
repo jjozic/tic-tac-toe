@@ -85,12 +85,14 @@ function checkWinner() {
         setTimeout(function () {
             alert('Player ' + currentPlayer + ' wins!')
             restart()
-        }, 500);
+        }, 250);
     }
 }
 
 function restart() {
-    console.log("gurke")
+    currentPlayer = 1
+    player2.classList.remove('selected')
+    player1.classList.add('selected')
     for (i = 0; i < 3; i++) {
         for (j = 0; j < 3; j++) {
             fields[i].childNodes[j].innerHTML = ''
